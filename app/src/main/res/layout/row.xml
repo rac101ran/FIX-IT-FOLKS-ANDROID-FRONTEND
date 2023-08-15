@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+    </data>
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:background="@color/white"
+        android:id="@+id/cardId"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_margin="8dp"
+        app:cardCornerRadius="6dp"
+        android:elevation="10dp">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="80dp">
+
+                <ImageView
+                    android:id="@+id/providerImage"
+                    android:layout_width="match_parent"
+
+                    android:src="@drawable/rac"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop">
+
+                </ImageView>
+
+                <TextView
+                    android:id="@+id/providerTitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#70000000"
+                    android:padding="2dp"
+                    android:gravity="center"
+                    android:text="Label"
+                    android:textColor="#FFFFFF" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="20dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/baseline_person_24"
+                    android:layout_weight="0.12"
+                    android:layout_gravity="center" />
+
+                <TextView
+                    android:id="@+id/tvProviderName"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="Provider Name"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_weight="0.25"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/providerRating"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:text="4.5"
+                        android:padding="1dp"
+                        android:textSize="14sp"
+                        android:textColor="#FFC107" />
+
+                    <ImageView
+                        android:id="@+id/providerRatingImage"
+                        android:layout_width="16dp"
+                        android:layout_height="match_parent"
+                        android:src="@drawable/star" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="20dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/baseline_location_on_24"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:id="@+id/tvProviderLocation"
+                    android:layout_width="0dp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent"
+                    android:text="Location"
+                    android:textColor="#888888" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_gravity="center_horizontal"
+                android:layout_height="20dp">
+
+                <ImageView
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/moneylogo"
+                    android:layout_weight="0.1" />
+
+                <TextView
+                    android:id="@+id/providerPriceRange"
+                    android:layout_width="0dp"
+                    android:layout_weight="0.98"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center_horizontal"
+                    android:text="1200 - 3000"
+                    android:textColor="#007ACC" />
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:id="@+id/serviceTypeTitle"
+                    android:text="Services"
+                    android:textColor="#555555" />
+
+                <TextView
+                    android:id="@+id/tvProviderServices"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1"
+                    android:textSize="10sp"
+                    android:textStyle="bold"
+                    android:textAlignment="center"
+                    android:text="ceiling " />
+
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.cardview.widget.CardView>
+</layout>
