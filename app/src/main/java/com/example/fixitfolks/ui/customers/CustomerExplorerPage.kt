@@ -1,19 +1,29 @@
 package com.example.fixitfolks.ui.customers
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.EditText
+import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.fixitfolks.R
 import com.example.fixitfolks.databinding.FragmentCustomerExplorerPageBinding
+import com.example.fixitfolks.databinding.UserInfoBinding
 import com.example.fixitfolks.models.Providers
 import com.example.fixitfolks.ui.providers.ProvidersForService
+import com.example.fixitfolks.ui.providers.utils.ProgressBarLoading
 import com.example.fixitfolks.ui.providers.utils.ProviderAdapter
 import com.example.fixitfolks.viewModel.CustomerExplorerViewModel
+import kotlinx.coroutines.launch
 
 /**
  * A simple [Fragment] subclass.
@@ -25,8 +35,8 @@ class CustomerExplorerPage : Fragment() {
     private lateinit var viewModel: CustomerExplorerViewModel
     private lateinit var providerList: MutableList<Providers>
     private lateinit var providerAdapter : ProviderAdapter
-
     private lateinit var binding : FragmentCustomerExplorerPageBinding
+    private lateinit var sharedPreferences : SharedPreferences
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
@@ -44,6 +54,11 @@ class CustomerExplorerPage : Fragment() {
     @SuppressLint("NotifyDataSetChanged")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        sharedPreferences = requireActivity().getSharedPreferences("admin", Context.MODE_PRIVATE)
+
+        val address = sharedPreferences.getString("address", null)
+
 
         viewModel = ViewModelProvider(this)[CustomerExplorerViewModel::class.java]
 
@@ -89,8 +104,47 @@ class CustomerExplorerPage : Fragment() {
             searchItems.arguments = bundle
             activity?.supportFragmentManager?.beginTransaction()?.replace(R.id.frame_customer_layout,searchItems)?.commit()
         }
+        if(address == null) showAddAddressDialog()
 
+        binding.location.setOnClickListener {
+            showAddAddressDialog()
+        }
+    }
 
+    private fun showAddAddressDialog() {
+        val dialogBinding = UserInfoBinding.inflate(layoutInflater)
+        val dialog = AlertDialog.Builder(context).setView(dialogBinding.root)
+            .setTitle("Add the required Details")
+            .setPositiveButton("Save", null) // Set onClickListener to null initially
+            .setCancelable(false)
+            .show()
+
+        dialog.getButton(AlertDialog.BUTTON_POSITIVE).setOnClickListener {
+            val address = dialogBinding.addressEditText.text.toString()
+            val landmark = dialogBinding.landmarkEditText.text.toString()
+
+            if (address.isNotBlank() && landmark.isNotBlank()) {
+                val username = sharedPreferences.getString("username",null)
+                val password = sharedPreferences.getString("password",null)
+                if(username!=null && password!=null) {
+                    viewModel.viewModelScope.launch {
+                        val response = viewModel.updateUserDetails(username,password,address,landmark)
+                        if(response?.status?.lowercase() == "success") {
+                            binding.location.setText(address)
+                            binding.location.isEnabled = false
+                            sharedPreferences.edit()?.putString("address",address)?.apply()
+                            sharedPreferences.edit()?.putString("landmark",landmark)?.apply()
+                        }
+                    }
+                }
+                dialog.dismiss()
+            } else {
+                if (address.isBlank()) dialogBinding.addressEditText.error = "Address is required"
+
+                if (landmark.isBlank()) dialogBinding.landmarkEditText.error = "Landmark is required"
+
+            }
+        }
     }
 
 }

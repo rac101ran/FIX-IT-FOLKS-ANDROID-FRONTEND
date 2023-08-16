@@ -18,6 +18,8 @@ class Homepage : AppCompatActivity() {
 
         supportFragmentManager.beginTransaction().replace(binding.frameCustomerLayout.id, CustomerExplorerPage()).commit()
 
+
+
         binding.wishlistId.setOnClickListener {
             supportFragmentManager.beginTransaction().replace(binding.frameCustomerLayout.id, SearchFragment()).commit()
         }

@@ -52,6 +52,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="match_parent"
             android:layout_height="300dp"
             android:layout_marginTop="204dp"
@@ -62,16 +63,16 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/user_choose_id"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
                 android:layout_weight="0.5"
-                android:tag="user_card"
-                app:cardElevation="5dp"
-                android:onClick="onCardClick"
                 android:foreground="@drawable/card_click"
-                android:id="@+id/user_choose_id"
-                app:cardCornerRadius="5dp">
+                android:onClick="onCardClick"
+                android:tag="user_card"
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -80,15 +81,15 @@
             </androidx.cardview.widget.CardView>
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/provider_choose_id"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_margin="20dp"
-                android:id="@+id/provider_choose_id"
-                app:cardElevation="5dp"
                 android:layout_weight="0.5"
                 android:foreground="@drawable/provider_account_card_click"
                 android:onClick="onCardClick"
-                app:cardCornerRadius="5dp">
+                app:cardCornerRadius="5dp"
+                app:cardElevation="5dp">
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -98,6 +99,38 @@
 
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CUSTOMER"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:textColor="@color/white"
+            android:fontFamily="@font/segoe"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.189"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="PROVIDER"
+            android:textSize="16sp"
+            android:textColor="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.796"
+            android:textStyle="bold"
+            android:fontFamily="@font/segoe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2"
+            app:layout_constraintVertical_bias="0.0" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

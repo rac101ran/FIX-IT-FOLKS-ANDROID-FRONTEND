@@ -82,5 +82,40 @@ class CustomerExplorerViewModel : ViewModel() {
         }
     }
 
+    suspend fun loginUserRequest(user_name : String , password : String) : LoginResponse? {
+        return withContext(Dispatchers.IO) {
+            val loginService = retrofit.create(CustomerService::class.java)
+            try {
+                val response = loginService.loginCustomerUser(user_name,password).execute()
+                Log.e("info:",response.toString())
+                if(response.isSuccessful) {
+                    response.body()
+                }else {
+                    null
+                }
+            }catch(e : IOException) {
+                null
+            }
+        }
+    }
+
+
+    suspend fun updateUserDetails(username : String , password : String , address : String , landmark : String) : ApiResponse? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val updateDetailsResponse = retrofit.create(CustomerService::class.java)
+                val response = updateDetailsResponse.updateAdditionalInformation(AdditionalDetails(username,password,address,landmark)).execute()
+                if(response.isSuccessful){
+                    response.body()
+                }else {
+                    null
+                }
+            }catch(e : Exception) {
+                Log.e("err message",e.message.toString())
+                null
+            }
+        }
+    }
+
 }
 
