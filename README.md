@@ -1,4 +1,4 @@
-# FIX-IT-FOLKS-ANDROID-FRONTEND-
+# FIX-IT-FOLKS-ANDROID-FRONTEND
 Front-end : creating a fixing/replacement service for home appliances , furniture etc.
 ![Screenshot_20230815_202844](https://github.com/rac101ran/FIX-IT-FOLKS-ANDROID-FRONTEND-/assets/59615161/e06be92c-c34d-4a09-b807-dc576be9e18e)
 
