@@ -20,4 +20,7 @@ interface CustomerService {
 
     @POST("/service-event/add")
     fun createOrderEvent(@Body eventRequest: EventRequest): Call<ApiResponse>
+
+    @POST("/customer-item-creation")
+    fun createCustomerForItems(@Body customer : CustomerItem): Call<CustomerItemResponse>
 }

@@ -40,21 +40,21 @@ class CustomerExplorerViewModel : ViewModel() {
         })
     }
 
-    fun createOrderEventRequest(customer: Int, provider: Int, item: Int,order: Int): ApiResponse? {
-        try {
-            val customerService = retrofit.create(CustomerService::class.java)
-            val eventRequest = EventRequest(Customer(customer), ProviderOrder(provider), Item(item), order_cost = order)
-            val response = customerService.createOrderEvent(eventRequest).execute()
-            if (response.isSuccessful) {
-                val apiResponse = response.body()
-                if (apiResponse?.status == "success") {
-                    return apiResponse
+    suspend fun createOrderEventRequest(customer: Int, provider: Int, item: Int,order: Int): ApiResponse? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val customerService = retrofit.create(CustomerService::class.java)
+                val eventRequest = EventRequest(Customer(customer), ProviderOrder(provider), Item(item), order_cost = order)
+                val response = customerService.createOrderEvent(eventRequest).execute()
+                if (response.isSuccessful) {
+                    response.body()
+                }else {
+                    null
                 }
+            } catch (e: Exception) {
+                Log.e("error:",e.message.toString())
+                null
             }
-            return null
-        } catch (e: Exception) {
-            Log.e("error:",e.message.toString())
-            return null
         }
     }
 
@@ -105,6 +105,23 @@ class CustomerExplorerViewModel : ViewModel() {
             try {
                 val updateDetailsResponse = retrofit.create(CustomerService::class.java)
                 val response = updateDetailsResponse.updateAdditionalInformation(AdditionalDetails(username,password,address,landmark)).execute()
+                if(response.isSuccessful){
+                    response.body()
+                }else {
+                    null
+                }
+            }catch(e : Exception) {
+                Log.e("err message",e.message.toString())
+                null
+            }
+        }
+    }
+
+    suspend fun createCustomerForItem(items: List<Int>, customer: Int): CustomerItemResponse? {
+        return withContext(Dispatchers.IO) {
+            try {
+                val updateDetailsResponse = retrofit.create(CustomerService::class.java)
+                val response = updateDetailsResponse.createCustomerForItems(CustomerItem(customer_id = customer , items = items)).execute()
                 if(response.isSuccessful){
                     response.body()
                 }else {

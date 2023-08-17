@@ -24,6 +24,8 @@ data class Item(@SerializedName("item_id") val itemId: Int)
 
 data class ApiResponse(@SerializedName("status") val status: String, @SerializedName("message") val message: String)
 
+data class ItemData(@SerializedName("created_customers_item") val createdCustomersItems : Int)
+data class CustomerItemResponse(@SerializedName("status") val status: String, @SerializedName("message") val message: String , @SerializedName("data") val data : ItemData)
 
 data class UserSignUpRequest(
     @SerializedName("user_name") val user_name : String,
@@ -50,3 +52,5 @@ data class  AdditionalDetails(
     @SerializedName("address") val address : String,
     @SerializedName("landmark") val landmark : String,
 )
+
+data class CustomerItem(@SerializedName("customer_id") val customer_id : Int,@SerializedName("fixing_items") val items : List<Int>)

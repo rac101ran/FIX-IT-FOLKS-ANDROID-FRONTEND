@@ -16,6 +16,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
@@ -85,43 +86,46 @@
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
                 android:layout_weight="0.9" />
+
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="0dp"
-                android:elevation="20dp"
-                android:layout_weight="0.06">
+                android:layout_weight="0.06"
+                android:elevation="20dp">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
+
                     <TextView
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_weight="0.9"
                         android:gravity="center"
-                        android:textStyle="bold|italic"
-                        android:text="ALL DONE WANNA CHECKOUT ?" />
+                        android:text="ALL DONE WANNA CHECKOUT ?"
+                        android:textStyle="bold|italic" />
+
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cartCard"
                         android:layout_width="0dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center"
-                        android:id="@+id/cartCard"
-                        android:layout_marginTop="5dp"
-                        android:layout_marginBottom="5dp"
                         android:layout_marginStart="5dp"
+                        android:layout_marginTop="5dp"
                         android:layout_marginEnd="30dp"
-                        app:cardCornerRadius="5dp"
-                        android:layout_weight="0.1">
+                        android:layout_marginBottom="5dp"
+                        android:layout_weight="0.1"
+                        app:cardCornerRadius="5dp">
+
                         <ImageView
+                            android:id="@+id/cartId"
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
-                            android:id="@+id/cartId"
-                            android:src="@drawable/baseline_shopping_cart_checkout_24"
-                            />
+                            android:src="@drawable/baseline_shopping_cart_checkout_24" />
                     </com.google.android.material.card.MaterialCardView>
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
-
 
 
         </LinearLayout>

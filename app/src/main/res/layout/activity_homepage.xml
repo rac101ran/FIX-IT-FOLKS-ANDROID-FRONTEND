@@ -18,6 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
             <com.google.android.material.bottomappbar.BottomAppBar
@@ -33,10 +34,10 @@
                     android:orientation="horizontal">
 
                     <LinearLayout
+                        android:id="@+id/explorer_id"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
-                        android:id="@+id/explorer_id"
                         android:orientation="vertical">
 
                         <ImageView
@@ -56,10 +57,10 @@
                     </LinearLayout>
 
                     <LinearLayout
+                        android:id="@+id/wishlist_id"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="0.25"
-                        android:id="@+id/wishlist_id"
                         android:orientation="vertical">
 
                         <ImageView
