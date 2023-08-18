@@ -1,5 +1,5 @@
 # FIX-IT-FOLKS-ANDROID-FRONTEND
-Front-end : creating a fixing/replacement service for home appliances , furniture etc.
+Front-end : Home services at your door step. offering expert fix and replacement services, solving all your home's glitches. Skilled technicians, efficient solutions, and unmatched customer satisfaction.
 ![Screenshot_20230815_202844](https://github.com/rac101ran/FIX-IT-FOLKS-ANDROID-FRONTEND-/assets/59615161/e06be92c-c34d-4a09-b807-dc576be9e18e)
 
 ![Screenshot_20230816_200445](https://github.com/rac101ran/FIX-IT-FOLKS-ANDROID-FRONTEND/assets/59615161/ba3bffa3-4e73-45c6-b821-ecafb29120ae)
