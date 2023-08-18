@@ -8,3 +8,5 @@ Front-end : creating a fixing/replacement service for home appliances , furnitur
 ![Screenshot_20230814_032335](https://github.com/rac101ran/FixItFolks/assets/59615161/0dbed18c-7bfa-4d53-a2c0-d286235914df)
 
 ![Screenshot_20230814_032739](https://github.com/rac101ran/FixItFolks/assets/59615161/e7a883bc-1b22-46b1-944e-2ae9750c5770)
+
+![Screenshot_20230818_060721](https://github.com/rac101ran/FIX-IT-FOLKS-ANDROID-FRONTEND/assets/59615161/b1c410ab-59da-4f8d-9684-a6a40aeb8e49)
