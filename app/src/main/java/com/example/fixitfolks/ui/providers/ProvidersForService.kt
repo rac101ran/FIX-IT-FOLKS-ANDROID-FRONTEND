@@ -152,7 +152,7 @@ class ProvidersForService : Fragment() {
 
             val sharedPreferences : SharedPreferences = context!!.getSharedPreferences("admin",Context.MODE_PRIVATE)
 
-            var providersMap = HashMap<Int,Provider>()
+            val providersMap = HashMap<Int,Provider>()
 
             val savedCartItemsMap = sharedPreferences.getString("order providers", null)
             if(savedCartItemsMap == null) {
@@ -161,10 +161,10 @@ class ProvidersForService : Fragment() {
                     if(provider.orders > 0) providersMap[provider.provider_id] = provider
                 }
             }else {
-                Log.e("message!",providerList.toString())
-                val type = object : TypeToken<HashMap<Int, Provider>>() {}.type
-                val previousMap : HashMap<Int, Provider> = Gson().fromJson(savedCartItemsMap, type)
-                providersMap = previousMap
+//                Log.e("message!",providerList.toString())
+//                val type = object : TypeToken<HashMap<Int, Provider>>() {}.type
+//                val previousMap : HashMap<Int, Provider> = Gson().fromJson(savedCartItemsMap, type)
+//                providersMap = previousMap
                 for(provider in providerList) {
                     if(provider.orders > 0) providersMap[provider.provider_id] = provider
                 }

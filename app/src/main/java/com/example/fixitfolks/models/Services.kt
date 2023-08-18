@@ -54,3 +54,19 @@ data class  AdditionalDetails(
 )
 
 data class CustomerItem(@SerializedName("customer_id") val customer_id : Int,@SerializedName("fixing_items") val items : List<Int>)
+data class CurrentEvent(
+    @SerializedName("event_id") val event_id: Int,
+    @SerializedName("event_provider_id") val event_provider_id: Int,
+    @SerializedName("event_item_id") val event_item_id: Int,
+    @SerializedName("status") val status: String,
+    @SerializedName("event_timestamp") val event_timestamp: String,
+    @SerializedName("event_customer_id") val event_customer_id: Int,
+    @SerializedName("order_cost") val order_cost: Int,
+    @SerializedName("provider_title") val provider_title: String,
+    @SerializedName("item_name") val item_name: String,
+    @SerializedName("rating") val rating : Double,
+    @SerializedName("address") val address : String
+)
+
+data class CustomerEventResponse(@SerializedName("status") val status : String , @SerializedName("message") val message : String,
+@SerializedName("data") val currentEvents : List<CurrentEvent>)

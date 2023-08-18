@@ -23,4 +23,7 @@ interface CustomerService {
 
     @POST("/customer-item-creation")
     fun createCustomerForItems(@Body customer : CustomerItem): Call<CustomerItemResponse>
+
+    @GET("/current_event/all")
+    fun getAllCurrentEventOrders(@Query("user_id") user_id : Int) : Call<CustomerEventResponse>
 }

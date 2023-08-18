@@ -17,13 +17,15 @@ import retrofit2.Response
 import retrofit2.create
 import java.io.IOException
 import java.math.BigInteger
+import java.time.temporal.ChronoUnit
 
 class CustomerExplorerViewModel : ViewModel() {
 
     private val providerService = retrofit.create(ProviderApiService::class.java)
     private val _providerList = MutableLiveData<List<Providers>>()
     val providerList: LiveData<List<Providers>> = _providerList
-
+    private val currentEvents = MutableLiveData<List<CurrentEvent>>()
+    val currentEventList : LiveData<List<CurrentEvent>> = currentEvents
     fun getHighestProviders() {
         providerService.getHighestProviders().enqueue(object : Callback<ProviderResponse> {
             override fun onResponse(call: Call<ProviderResponse>, response: Response<ProviderResponse>) {
@@ -132,6 +134,25 @@ class CustomerExplorerViewModel : ViewModel() {
                 null
             }
         }
+    }
+
+    fun getAllCurrentEvents(id : Int) {
+         retrofit.create(CustomerService::class.java).getAllCurrentEventOrders(id).enqueue(object : Callback<CustomerEventResponse>{
+             override fun onResponse(
+                 call: Call<CustomerEventResponse>,
+                 response: Response<CustomerEventResponse>
+             ) {
+                 if(response.isSuccessful && response.body()?.status == "success") {
+                     currentEvents.value = response.body()?.currentEvents
+                     Log.e("response success : ",response.body()?.currentEvents.toString())
+                 }
+             }
+
+             override fun onFailure(call: Call<CustomerEventResponse>, t: Throwable) {
+                 Log.e("error:",t.message.toString())
+             }
+
+         })
     }
 
 }
